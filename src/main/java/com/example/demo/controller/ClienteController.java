@@ -25,7 +25,7 @@ public class ClienteController {
     }
 
     @GetMapping(path = "/listar", produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody List<ClienteModel>listar(){
+    public @ResponseBody ResponseEntity<List<ClienteModel>>listar(){
         return clienteServices.listar();
     }
 
@@ -44,7 +44,7 @@ public class ClienteController {
         clienteServices.actualizar(cliente);
     }
 
-    @GetMapping(path = "/obtener")
+    @GetMapping(path = "/obtener", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody ClienteModel obtenerId(@RequestParam(name ="id") Long id){
         return clienteServices.obtenerId(id);
     }

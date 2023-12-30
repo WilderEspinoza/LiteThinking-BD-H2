@@ -27,8 +27,8 @@ public class ClienteServices {
 
     }*/
 
-    public List<ClienteModel> listar(){
-        return repository.findAll();
+    public ResponseEntity<List<ClienteModel>> listar(){
+        return new ResponseEntity<List<ClienteModel>>(repository.findAll(), HttpStatus.OK);
     }
 
     public void guardar(ClienteModel cliente){
