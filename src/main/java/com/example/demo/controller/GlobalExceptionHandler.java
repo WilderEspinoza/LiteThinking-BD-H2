@@ -16,6 +16,6 @@ public class GlobalExceptionHandler {
     @ResponseBody
     public ResponseEntity<String>handlerExcetion (Exception ex){
         logger.error("Se produjo un error no controlado a nivel del servidor", ex);
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error interno de servidor");
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error interno de servidor, debe faltar seguro campos para agregar");
     }
 }

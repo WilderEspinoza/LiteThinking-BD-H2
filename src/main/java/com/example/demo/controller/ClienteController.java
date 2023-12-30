@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.model.ClienteModel;
 import com.example.demo.service.ClienteServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,18 +12,17 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/clients")
-public class ClienteController {
+public class ClienteController{
 
     @Autowired
     private ClienteServices clienteServices;
 
-    @GetMapping(path = "/query", produces = MediaType.APPLICATION_JSON_VALUE)
+    /*@GetMapping(path = "/query", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody ResponseEntity<ClienteModel> getData(
             @RequestParam(name = "type") String type,
             @RequestParam(name = "document") Integer document){
-       // return clienteServices.getData(type, document);
-        return null;
-    }
+        return clienteServices.getData(type, document);
+    }*/
 
     @GetMapping(path = "/listar", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody ResponseEntity<List<ClienteModel>>listar(){
@@ -30,22 +30,22 @@ public class ClienteController {
     }
 
     @PostMapping(path = "/guardar", produces = MediaType.APPLICATION_JSON_VALUE)
-    public void guardar(@RequestBody ClienteModel cliente){
-        clienteServices.guardar(cliente);
+    public ResponseEntity<Void> guardar(@RequestBody ClienteModel cliente){
+        return clienteServices.guardar(cliente);
     }
 
-    @DeleteMapping(path = "/eliminar", produces = MediaType.APPLICATION_JSON_VALUE)
-    public void eliminar(@RequestParam(name ="id") Long id){
-        clienteServices.eliminar(id);
+    @DeleteMapping(path = "/eliminar/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Void> eliminar(@PathVariable Long id){
+        return clienteServices.eliminar(id);
     }
 
-    @PostMapping(path = "/actualizar", produces = MediaType.APPLICATION_JSON_VALUE)
-    public void actualizar(@RequestBody ClienteModel cliente){
-        clienteServices.actualizar(cliente);
+    @PutMapping(path = "/actualizar", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Void> actualizar(@RequestBody ClienteModel cliente){
+        return clienteServices.actualizar(cliente);
     }
 
-    @GetMapping(path = "/obtener", produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody ClienteModel obtenerId(@RequestParam(name ="id") Long id){
+    @GetMapping(path = "/obtener/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody ResponseEntity<ClienteModel> obtenerId(@PathVariable Long id){
         return clienteServices.obtenerId(id);
     }
 }
