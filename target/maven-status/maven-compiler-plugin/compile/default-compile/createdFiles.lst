@@ -1,0 +1,6 @@
+com\example\demo\DemoApplication.class
+com\example\demo\model\ClienteModel.class
+com\example\demo\repository\ClienteRepository.class
+com\example\demo\controller\ClienteController.class
+com\example\demo\service\ClienteServices.class
+com\example\demo\controller\GlobalExceptionHandler.class

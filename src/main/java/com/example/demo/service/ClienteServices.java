@@ -18,17 +18,6 @@ public class ClienteServices {
     @Autowired
     private ClienteRepository repository;
 
-    /*public ResponseEntity<ClienteModel> getData(String documentype, Integer document){
-
-        //ClienteModel clienteModel = new ClienteModel();
-        clienteModel.setDocumentType(documentype);
-        clienteModel.setNumberDocument(document);
-
-        //return new ResponseEntity<ClienteModel>(clienteModel, HttpStatus.OK);
-        return ResponseEntity.ok(clienteModel);
-
-    }*/
-
     public ResponseEntity<List<ClienteModel>> listar(){
 
         if(!repository.findAll().isEmpty())

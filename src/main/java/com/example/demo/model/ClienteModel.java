@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 
 @Entity
-@Table(name="cliente")
+@Table(name="clientes")
 public class ClienteModel {
 
     @Id

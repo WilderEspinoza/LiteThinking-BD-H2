@@ -17,13 +17,6 @@ public class ClienteController{
     @Autowired
     private ClienteServices clienteServices;
 
-    /*@GetMapping(path = "/query", produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody ResponseEntity<ClienteModel> getData(
-            @RequestParam(name = "type") String type,
-            @RequestParam(name = "document") Integer document){
-        return clienteServices.getData(type, document);
-    }*/
-
     @GetMapping(path = "/listar", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody ResponseEntity<List<ClienteModel>>listar(){
         return clienteServices.listar();
